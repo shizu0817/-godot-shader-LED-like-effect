@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfyuy7vmqv8cw"]
+
+[ext_resource type="Shader" path="res://shaders/led.gdshader" id="1_gu1v4"]
+[ext_resource type="Texture2D" uid="uid://dh1msot3vnu8w" path="res://sprites/shipYellow_manned_editted.png" id="2_ulsnn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_50gj8"]
+shader = ExtResource("1_gu1v4")
+shader_parameter/led_size = 0.3
+shader_parameter/smooth_interval = 0.2
+shader_parameter/uv_scale = Vector2(75, 45)
+shader_parameter/dark_led_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+shader_parameter/scroll_speed = 0.1
+shader_parameter/glow_above = 0.9
+shader_parameter/glow_strength = 10.0
+
+[sub_resource type="Environment" id="Environment_2rrib"]
+background_mode = 3
+glow_enabled = true
+
+[node name="ScrollingLed" type="Node2D"]
+
+[node name="Icon" type="Sprite2D" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_50gj8")
+position = Vector2(576, 348)
+scale = Vector2(2, 2)
+texture = ExtResource("2_ulsnn")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2rrib")
